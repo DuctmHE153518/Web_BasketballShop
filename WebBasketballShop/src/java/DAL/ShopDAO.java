@@ -11,32 +11,33 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import model.Shop;
 
 /**
  *
  * @author Duc Tran
  */
 
-public class ShopDAO extends BaseDAO<Account> {
+public class ShopDAO extends BaseDAO<Shop> {
         PreparedStatement ps = null;
     @Override
-    public ArrayList<Account> getAll() {
-        ArrayList<Account> account = new ArrayList<>();
+    public ArrayList<Shop> getAll() {
+        ArrayList<Shop> Shop = new ArrayList<>();
         try {
-            String sql = "select * from [User]";
+            String sql = "select * from [Ballershop]";
             PreparedStatement statement = connection.prepareStatement(sql);
             ResultSet rs = statement.executeQuery();
             while(rs.next()) {
-                Account a = new Account();
-                a.setUsername(rs.getString("username"));
-                a.setPassword(rs.getString("password"));
-                a.setDisplayname(rs.getString("displayname"));
-                account.add(a);
+                Shop s = new Shop();
+                s.setUsername(rs.getString("username"));
+                s.setPassword(rs.getString("password"));
+                s.setDisplayname(rs.getString("displayname"));
+                Shop.add(s);
             }
         } catch (SQLException ex) {
             Logger.getLogger(ShopDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return account;
+        return Shop;
     }
 }   
 
