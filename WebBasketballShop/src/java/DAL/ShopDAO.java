@@ -5,10 +5,11 @@
  */
 package DAL;
 
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import model.Category;
@@ -19,15 +20,18 @@ import model.Product;
  * @author Duc Tran
  */
 
-public class ShopDAO extends BaseDAO<Product> {
-        PreparedStatement ps = null;
-    @Override
+public class ShopDAO {
+    Connection conn = null;
+    PreparedStatement ps = null;
+    ResultSet rs = null;
+
     public ArrayList<Product> getAllProduct() {
         ArrayList<Product> products = new ArrayList<>();
+        String sql = "select * from product";
         try {
-            String sql = "select * from product";
-            PreparedStatement statement = connection.prepareStatement(sql);
-            ResultSet rs = statement.executeQuery();
+            conn = new DBContext().getConnection();//mo ket noi voi sql
+            ps = conn.prepareStatement(sql);
+            rs = ps.executeQuery();
             while(rs.next()) {
                 Product p = new Product();
                 p.setId(rs.getString("product_id"));
@@ -37,11 +41,8 @@ public class ShopDAO extends BaseDAO<Product> {
                 p.setQuantity(rs.getInt("quantity"));
                 p.setImg(rs.getString("product_img"));
                 products.add(p);
-//                product.add(new Product(rs.getString(1), rs.getString(3), 
-//                                        rs.getDouble(4), rs.getString(5), 
-//                                        rs.getInt(6), rs.getString(7)));
             }
-        } catch (SQLException ex) {
+        } catch (Exception ex) {
             Logger.getLogger(ShopDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return products;
@@ -49,22 +50,20 @@ public class ShopDAO extends BaseDAO<Product> {
     
     public ArrayList<Category> getAllCategory() {
         ArrayList<Category> categorys = new ArrayList<>();
+        String sql = "select * from Category";
         try {
-            String sql = "select * from category";
-            PreparedStatement statement = connection.prepareStatement(sql);
-            ResultSet rs = statement.executeQuery();
+            conn = new DBContext().getConnection();//mo ket noi voi sql
+            ps = conn.prepareStatement(sql);
+            rs = ps.executeQuery();
             while(rs.next()) {
                 Category c = new Category();
-                c.setId(rs.getInt("product_id"));
-                c.setName(rs.getString("product_name"));
-
+                c.setId(rs.getInt("category_id"));
+                c.setName(rs.getString("category_name"));
                 categorys.add(c);
             }
-        } catch (SQLException ex) {
+        } catch (Exception ex) {
             Logger.getLogger(ShopDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return categorys;
     }
-}   
-
-    
+}

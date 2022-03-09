@@ -95,8 +95,6 @@
               </ul>
             </li>
             <li class="active"><a href="shop.jsp">Shop</a></li>
-            <li><a href="#">Catalogue</a></li>
-            <li><a href="#">New Arrivals</a></li>
             <li><a href="contact.jsp">Contact</a></li>
           </ul>
         </div>

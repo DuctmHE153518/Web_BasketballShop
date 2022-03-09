@@ -14,6 +14,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.Category;
 import model.Product;
 
 /**
@@ -37,8 +38,10 @@ public class IndexServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         ShopDAO db = new ShopDAO();
         ArrayList<Product> products = db.getAllProduct();
+        ArrayList<Category> categorys = db.getAllCategory();
         
         request.setAttribute("product", products);
+        request.setAttribute("category", categorys);
         request.getRequestDispatcher("index.jsp").forward(request, response);
         
     }
