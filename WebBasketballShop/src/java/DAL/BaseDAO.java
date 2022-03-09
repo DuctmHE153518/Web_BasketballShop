@@ -30,6 +30,6 @@ public abstract class BaseDAO<T> {
         }
     }
    
-    public abstract ArrayList<T> getAll();
+    public abstract ArrayList<T> getAllProduct();
   
 }

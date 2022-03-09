@@ -36,7 +36,7 @@ public class IndexServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         ShopDAO db = new ShopDAO();
-        ArrayList<Product> products = db.getAll();
+        ArrayList<Product> products = db.getAllProduct();
         
         request.setAttribute("product", products);
         request.getRequestDispatcher("index.jsp").forward(request, response);
