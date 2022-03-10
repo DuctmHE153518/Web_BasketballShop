@@ -150,7 +150,7 @@
                         <div class="block-4 text-center border">
                             <figure class="block-4-image">
                                 <a href="shop-single.jsp">
-                                    <img src="${o.img}" background-image="900px 60px" alt="Image placeholder" class="img-fluid"></a>
+                                    <img src="${o.img}" alt="Image placeholder" class="img-fluid"></a>
                             </figure>
                         <div class="block-4-text p-4">
                             <h3><a href="shop-single.jsp">${o.name}</a></h3>
