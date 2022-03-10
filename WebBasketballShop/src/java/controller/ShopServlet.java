@@ -7,6 +7,7 @@ package controller;
 
 import DAL.ShopDAO;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -20,8 +21,8 @@ import model.Product;
  *
  * @author Duc Tran
  */
-@WebServlet(name = "IndexServlet", urlPatterns = {"/home"})
-public class IndexServlet extends HttpServlet {
+@WebServlet(name = "ShopServlet", urlPatterns = {"/shop"})
+public class ShopServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,11 +37,12 @@ public class IndexServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         ShopDAO db = new ShopDAO();
-        ArrayList<Product> trends = db.getTrend();
+        ArrayList<Product> products = db.getAllProduct();
+        ArrayList<Category> categorys = db.getAllCategory();
         
-        request.setAttribute("listT", trends);
-        request.getRequestDispatcher("index.jsp").forward(request, response);
-        
+        request.setAttribute("listP", products);
+        request.setAttribute("listC", categorys);
+        request.getRequestDispatcher("shop.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

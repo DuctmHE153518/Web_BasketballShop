@@ -4,6 +4,7 @@
     Author     : Duc Tran
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -94,7 +95,7 @@
                 <li><a href="#">Menu Three</a></li>
               </ul>
             </li>
-            <li><a href="shop.jsp">Shop</a></li>
+            <li><a href="/WebBasketballShop/shop">Shop</a></li>
             <li><a href="contact.jsp">Contact</a></li>
           </ul>
         </div>
@@ -167,66 +168,22 @@
         <div class="row">
           <div class="col-md-12">
             <div class="nonloop-block-3 owl-carousel">
-              <div class="item">
-                <div class="block-4 text-center">
-                  <figure class="block-4-image">
-                    <img src="images/cloth_1.jpg" alt="Image placeholder" class="img-fluid">
-                  </figure>
-                  <div class="block-4-text p-4">
-                    <h3><a href="#">Tank Top</a></h3>
-                    <p class="mb-0">Finding perfect t-shirt</p>
-                    <p class="text-primary font-weight-bold">$50</p>
-                  </div>
-                </div>
-              </div>
-              <div class="item">
-                <div class="block-4 text-center">
-                  <figure class="block-4-image">
-                    <img src="images/shoe_1.jpg" alt="Image placeholder" class="img-fluid">
-                  </figure>
-                  <div class="block-4-text p-4">
-                    <h3><a href="#">Corater</a></h3>
-                    <p class="mb-0">Finding perfect products</p>
-                    <p class="text-primary font-weight-bold">$50</p>
-                  </div>
-                </div>
-              </div>
-              <div class="item">
-                <div class="block-4 text-center">
-                  <figure class="block-4-image">
-                    <img src="images/cloth_2.jpg" alt="Image placeholder" class="img-fluid">
-                  </figure>
-                  <div class="block-4-text p-4">
-                    <h3><a href="#">Polo Shirt</a></h3>
-                    <p class="mb-0">Finding perfect products</p>
-                    <p class="text-primary font-weight-bold">$50</p>
-                  </div>
-                </div>
-              </div>
-              <div class="item">
-                <div class="block-4 text-center">
-                  <figure class="block-4-image">
-                    <img src="images/cloth_3.jpg" alt="Image placeholder" class="img-fluid">
-                  </figure>
-                  <div class="block-4-text p-4">
-                    <h3><a href="#">T-Shirt Mockup</a></h3>
-                    <p class="mb-0">Finding perfect products</p>
-                    <p class="text-primary font-weight-bold">$50</p>
-                  </div>
-                </div>
-              </div>
-              <div class="item">
-                <div class="block-4 text-center">
-                  <figure class="block-4-image">
-                    <img src="images/shoe_1.jpg" alt="Image placeholder" class="img-fluid">
-                  </figure>
-                  <div class="block-4-text p-4">
-                    <h3><a href="#">Corater</a></h3>
-                    <p class="mb-0">Finding perfect products</p>
-                    <p class="text-primary font-weight-bold">$50</p>
-                  </div>
-                </div>
-              </div>
+                <c:forEach items="${listT}" var="o">
+                    <div class="item">
+                        <div class="block-4 text-center">
+                            <figure class="block-4-image">
+                                <img src="${o.img}" alt="Image placeholder" class="img-fluid">
+                            </figure>
+                            <div class="block-4-text p-4">
+                                <h3><a href="#">${o.name}</a></h3>
+                                <p class="mb-0">Hàng replica</p>
+                                <p class="text-primary font-weight-bold">${o.price}</p>
+                            </div>
+                        </div>
+                    </div>
+                  </c:forEach>
+              
+                
             </div>
           </div>
         </div>

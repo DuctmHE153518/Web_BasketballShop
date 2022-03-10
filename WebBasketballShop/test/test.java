@@ -17,7 +17,7 @@ import model.Product;
 public class test {
         public static void main(String[] args) {
         ShopDAO dao = new ShopDAO();
-        ArrayList<Product> list = dao.getAllProduct();
+        ArrayList<Product> list = dao.getTrend();
         for(Product o : list) {
             System.out.println(o);
         }
