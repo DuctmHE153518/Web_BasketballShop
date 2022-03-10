@@ -38,11 +38,11 @@ public class IndexServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         ShopDAO db = new ShopDAO();
         ArrayList<Product> products = db.getAllProduct();
-        ArrayList<Category> categorys = db.getAllCategory();
+        //ArrayList<Category> categorys = db.getAllCategory();
         
-        request.setAttribute("product", products);
-        request.setAttribute("category", categorys);
-        request.getRequestDispatcher("index.jsp").forward(request, response);
+        request.setAttribute("listP", products);
+        //request.setAttribute("category", categorys);
+        request.getRequestDispatcher("shop.jsp").forward(request, response);
         
     }
 

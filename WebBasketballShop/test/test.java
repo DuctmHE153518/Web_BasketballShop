@@ -17,8 +17,8 @@ import model.Product;
 public class test {
         public static void main(String[] args) {
         ShopDAO dao = new ShopDAO();
-        ArrayList<Category> list = dao.getAllCategory();
-        for(Category o : list) {
+        ArrayList<Product> list = dao.getAllProduct();
+        for(Product o : list) {
             System.out.println(o);
         }
     }
