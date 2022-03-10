@@ -446,8 +446,7 @@ a {
 
 /* Blocks */
 .site-blocks-cover {
-  width: 100%;
-  background-size: contain;
+  background-size: cover;
   background-repeat: no-repeat;
   background-position: center center; }
   .site-blocks-cover, .site-blocks-cover .row {
