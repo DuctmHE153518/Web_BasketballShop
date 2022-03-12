@@ -88,4 +88,29 @@ public class ShopDAO {
         }
         return products;
     }
+    
+    public ArrayList<Product> getProductCateId(String id) {
+        ArrayList<Product> products = new ArrayList<>();
+        String sql = "select * from product \n" +
+                        "where category_id = ?";
+        try {
+            conn = new DBContext().getConnection();//mo ket noi voi sql
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, id);
+            rs = ps.executeQuery();
+            while(rs.next()) {
+                Product p = new Product();
+                p.setId(rs.getString("product_id"));
+                p.setName(rs.getString("product_name"));
+                p.setPrice(rs.getDouble("product_price"));
+                p.setDescribe(rs.getString("product_describe"));
+                p.setQuantity(rs.getInt("quantity"));
+                p.setImg(rs.getString("product_img"));
+                products.add(p);
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(ShopDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return products;
+    }
 }

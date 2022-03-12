@@ -17,7 +17,7 @@ public class test {
 
     public static void main(String[] args) {
         ShopDAO dao = new ShopDAO();
-        ArrayList<Product> list = dao.getTrend();
+        ArrayList<Product> list = dao.getProductCateId("1");
         for (Product o : list) {
             System.out.println(o);
         }
