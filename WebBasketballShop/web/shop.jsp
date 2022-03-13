@@ -149,11 +149,11 @@
                     <div class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up">
                         <div class="block-4 text-center border">
                             <figure class="block-4-image">
-                                <a href="shop-single.jsp">
+                                <a href="shop-detail.jsp">
                                     <img src="${o.img}" alt="Image placeholder" class="img-fluid"></a>
                             </figure>
                         <div class="block-4-text p-4">
-                            <h3><a href="shop-single.jsp">${o.name}</a></h3>
+                            <h3><a href="detail?pid=${o.id}">${o.name}</a></h3>
                             <p class="mb-0">Hàng replica</p>
                             <p class="text-primary font-weight-bold">${o.price}</p>
                         </div>
@@ -184,7 +184,7 @@
               <h3 class="mb-3 h6 text-uppercase text-black d-block">Categories</h3>
               <ul class="list-unstyled mb-0">
                   <c:forEach items="${listC}" var="o">
-                      <li class="mb-1 ${tag==o.id?"active":""}"><a href="category?id=${o.id}" class="d-flex"><span>${o.name}</span></a></li>
+                      <li class="mb-1 ${o.id==tag?"active":""}"><a href="category?id=${o.id}" class="d-flex"><span>${o.name}</span></a></li>
                   </c:forEach>
               </ul>
             </div>

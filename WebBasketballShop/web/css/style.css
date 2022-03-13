@@ -1,7 +1,6 @@
-rounded .list-unstyled li.active{
+a .active{
     color: orange;
 }
-
 /* Base */
 body {
   line-height: 1.7;
