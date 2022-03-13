@@ -45,7 +45,7 @@
 
             <div class="col-12 mb-3 mb-md-0 col-md-4 order-1 order-md-2 text-center">
               <div class="site-logo">
-                <a href="index.jsp" class="js-logo-clone"> Baller Shop</a>
+                <a href="/WebBasketballShop/home" class="js-logo-clone">Baller Shop</a>
               </div>
             </div>
 
@@ -60,7 +60,8 @@
                       <span class="count">2</span>
                     </a>
                   </li> 
-                  <li class="d-inline-block d-md-none ml-md-0"><a href="#" class="site-menu-toggle js-menu-toggle"><span class="icon-menu"></span></a></li>
+                  <li class="d-inline-block d-md-none ml-md-0"><a href="#" class="site-menu-toggle js-menu-toggle">
+                          <span class="icon-menu"></span></a></li>
                 </ul>
               </div> 
             </div>
@@ -110,7 +111,7 @@
             <div class="intro-text text-center text-md-left">
               <p class="mb-4">Some people want it to happen, some wish it would happen, and others make it happen.</p>
               <p>
-                <a href="#" class="btn btn-sm btn-primary">Shop Now</a>
+                <a href="/WebBasketballShop/shop" class="btn btn-sm btn-primary">Shop Now</a>
               </p>
             </div>
           </div>
@@ -172,18 +173,17 @@
                     <div class="item">
                         <div class="block-4 text-center">
                             <figure class="block-4-image">
-                                <img src="${o.img}" alt="Image placeholder" class="img-fluid">
+                                <a href="detail?pid=${o.id}">
+                                <img src="${o.img}" alt="Image placeholder" class="img-fluid"></a>
                             </figure>
                             <div class="block-4-text p-4">
-                                <h3><a href="#">${o.name}</a></h3>
+                                <h3><a href="detail?pid=${o.id}">${o.name}</a></h3>
                                 <p class="mb-0">Hàng replica</p>
                                 <p class="text-primary font-weight-bold">${o.price}</p>
                             </div>
                         </div>
                     </div>
                   </c:forEach>
-              
-                
             </div>
           </div>
         </div>
@@ -202,49 +202,15 @@
             <a href="#"><img src="images/blog_1.jpg" alt="Image placeholder" class="img-fluid rounded"></a>
           </div>
           <div class="col-md-12 col-lg-5 text-center pl-md-5">
-            <h2><a href="#">50% less in all items</a></h2>
-            <p class="post-meta mb-4">By <a href="#">Carl Smith</a> <span class="block-8-sep">&bullet;</span> September 3, 2018</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam iste dolor accusantium facere corporis ipsum animi deleniti fugiat. Ex, veniam?</p>
-            <p><a href="#" class="btn btn-primary btn-sm">Shop Now</a></p>
+            <h2><a href="#">Siêu Sale 25% các sản phẩm của PEAK</a></h2>
+            <p class="post-meta mb-4">By <a href="#">PEAK VietNam</a> <span class="block-8-sep">&bullet;</span> Ngày 1 tháng 4, 2022</p>
+            <p>Siêu Sale ngày hội giảm giá đến từ nhà tài trợ PEAK Việt Nam, giảm giá tất cả các sản phẩm PEAK từ 5% - 25% trong ngày 1 tháng 4 năm 2022. HIện tại các bạn có thể đến cửa hàng để tham khảo các sản phẩm khác. </p>
+            <p><a href="index.jsp" class="btn btn-primary btn-sm">Shop Now</a></p>
           </div>
         </div>
       </div>
     </div>
-
-    <footer class="site-footer border-top">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-6 col-lg-3 mb-4 mb-lg-0">
-            <h3 class="footer-heading mb-4">Khuyến Mãi</h3>
-            <a href="#" class="block-6">
-              <img src="images/hero_1.jpg" alt="Image placeholder" class="img-fluid rounded mb-4">
-                <h3 class="font-weight-light  mb-0">Siêu SALE tháng kỷ niệm</h3>
-              <p>Khuyến mãi từ ngày 1 đến 30 tháng 12, 2021</p>
-            </a>
-          </div>
-          <div class="col-md-6 col-lg-3">
-            <div class="block-5 mb-5">
-              <h3 class="footer-heading mb-4">Contact Info</h3>
-              <ul class="list-unstyled">
-                <li class="address"> Số 210 đường Trần Hưng Đạo, tỉnh Hoà Bình.</li>
-                <li class="phone"><a href="tel://0836579232">+84 83 657 92 32</a></li>
-                <li class="email">ducwww2000@gmail.com</li>
-              </ul>
-            </div>
-
-            <div class="block-7">
-              <form action="#" method="post">
-                <label for="email_subscribe" class="footer-heading">Subscribe</label>
-                <div class="form-group">
-                  <input type="text" class="form-control py-4" id="email_subscribe" placeholder="Email">
-                  <input type="submit" class="btn btn-sm btn-primary" value="Send">
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
-    </footer>
+    <jsp:include page="footer.jsp"></jsp:include>
   </div>
 
   <script src="js/jquery-3.3.1.min.js"></script>

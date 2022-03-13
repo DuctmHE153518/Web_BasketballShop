@@ -17,9 +17,10 @@ public class test {
 
     public static void main(String[] args) {
         ShopDAO dao = new ShopDAO();
-        ArrayList<Product> list = dao.getProductCateId("1");
-        for (Product o : list) {
-            System.out.println(o);
-        }
+        Product list = dao.getProductId("P001");
+        System.out.println(list);
+//        for (Product o : list) {
+//            System.out.println(o);
+//        }
     }
 }
