@@ -11,6 +11,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import model.Account;
 import model.Category;
 import model.Product;
 
@@ -156,6 +157,26 @@ public class ShopDAO {
             Logger.getLogger(ShopDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return products;
+    }
+    
+    public Account login(String user, String pass) {
+        String sql = "select * from users\n" +
+                        "where [user_name] = ?\n" +
+                        "and [user_pass] = ?";
+        try {
+            conn = new DBContext().getConnection();//mo ket noi voi sql
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, user);
+            ps.setString(2, pass);
+            rs = ps.executeQuery();
+            while(rs.next()) {
+                return new Account(rs.getInt(1), rs.getString(2), 
+                        rs.getString(3), rs.getString(4), 
+                        rs.getString(5));
+            }
+        } catch (Exception e) {
+        }
+        return null;
     }
     
 }
