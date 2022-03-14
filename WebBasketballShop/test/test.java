@@ -17,10 +17,9 @@ public class test {
 
     public static void main(String[] args) {
         ShopDAO dao = new ShopDAO();
-        Product list = dao.getProductId("P001");
-        System.out.println(list);
-//        for (Product o : list) {
-//            System.out.println(o);
-//        }
+        ArrayList<Product> list = dao.searchName("nike");
+        for (Product o : list) {
+            System.out.println(o);
+        }
     }
 }
