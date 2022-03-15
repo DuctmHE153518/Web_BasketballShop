@@ -12,15 +12,14 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import model.Account;
 
 /**
  *
  * @author Duc Tran
  */
-@WebServlet(name = "LoginServlet", urlPatterns = {"/login"})
-public class LoginServlet extends HttpServlet {
+@WebServlet(name = "SignupServlet", urlPatterns = {"/signup"})
+public class SignupServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,21 +34,25 @@ public class LoginServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         String user = request.getParameter("username");
+        String email = request.getParameter("email");
         String pass = request.getParameter("password");
-        
-        ShopDAO db = new ShopDAO();
-        Account a = db.login(user, pass);
-        if(a != null) {
-            HttpSession session = request.getSession();
-            session.setAttribute("acc", a);
-            session.setMaxInactiveInterval(36000);
-            response.sendRedirect("home");
-        }else{
-            request.setAttribute("mess", "Tài khoản hoặc mật khẩu SAI!!!");
-            request.getRequestDispatcher("login.jsp").forward(request, response);
+        String repass = request.getParameter("re-password");
+        if (!pass.equals(repass)) {
+            request.setAttribute("mess", "Mật khẩu nhập lại không đúng!!!");
+            request.getRequestDispatcher("signup.jsp").forward(request, response);
+        } else {
+            ShopDAO db = new ShopDAO();
+            Account a = db.checkAccount(user);
+            if (a == null) {
+                db.signup(user, email, pass);
+                response.sendRedirect("home");
+            } else {
+                request.setAttribute("mess", "Tên người dùng đã tồn tại!!!");
+                request.getRequestDispatcher("signup.jsp").forward(request, response);
+            }
+
         }
-        
-        
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

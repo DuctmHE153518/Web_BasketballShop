@@ -5,22 +5,21 @@
  */
 package controller;
 
-import DAL.ShopDAO;
 import java.io.IOException;
+import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import model.Account;
 
 /**
  *
  * @author Duc Tran
  */
-@WebServlet(name = "LoginServlet", urlPatterns = {"/login"})
-public class LoginServlet extends HttpServlet {
+@WebServlet(name = "LogoutServlet", urlPatterns = {"/logout"})
+public class LogoutServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,22 +33,9 @@ public class LoginServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String user = request.getParameter("username");
-        String pass = request.getParameter("password");
-        
-        ShopDAO db = new ShopDAO();
-        Account a = db.login(user, pass);
-        if(a != null) {
-            HttpSession session = request.getSession();
-            session.setAttribute("acc", a);
-            session.setMaxInactiveInterval(36000);
-            response.sendRedirect("home");
-        }else{
-            request.setAttribute("mess", "Tài khoản hoặc mật khẩu SAI!!!");
-            request.getRequestDispatcher("login.jsp").forward(request, response);
-        }
-        
-        
+        HttpSession session = request.getSession();
+        session.removeAttribute("acc");
+        response.sendRedirect("home");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

@@ -4,6 +4,7 @@
     Author     : Duc Tran
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <header class="site-navbar" role="banner">
     <div class="site-navbar-top">
@@ -26,8 +27,9 @@
                 <div class="col-6 col-md-4 order-3 order-md-3 text-right">
                     <div class="site-top-icons">
                         <ul>
-                            <li><a href="login.jsp">Login<span class="icon icon-person"></span></a></li>
-
+                            <c:if test="${sessionScope.acc != null}">
+                                <li><a href="#">User: ${sessionScope.acc.name}<span class="icon icon-person"></span></a></li>
+                            </c:if>
                             <li><a href="#"><span class="icon icon-heart-o"></span></a></li>
                             <li>
                                 <a href="cart.jsp" class="site-cart">
@@ -73,6 +75,22 @@
                 </li>
                 <li><a href="shop">Shop</a></li>
                 <li><a href="contact.jsp">Contact</a></li>
+                <li class="has-children">
+                    <a href="login.jsp">User</a>
+                    <ul class="dropdown">
+                        <c:if test="${sessionScope.acc == null}">
+                            <li><a href="login.jsp">Login</a></li>
+                        </c:if>
+                        <c:if test="${sessionScope.acc != null}">
+                            <li><a href="logout">logout</a></li>
+                        </c:if>
+                            
+                        <c:if test="${sessionScope.acc.isAdmin == 'TRUE'}">
+                            <li><a href="#">Manager Account</a></li>
+                            <li><a href="#">Manager Product</a></li>
+                        </c:if>
+                    </ul>
+                </li>
             </ul>
         </div>
     </nav>
