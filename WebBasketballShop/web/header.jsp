@@ -52,28 +52,23 @@
                 <li class="has-children active">
                     <a href="index.jsp">Home</a>
                     <ul class="dropdown">
-                        <li><a href="#">Menu One</a></li>
-                        <li><a href="#">Menu Two</a></li>
-                        <li><a href="#">Menu Three</a></li>
+                        <li><a href="category?id=6">Bóng rổ</a></li>
+                        <li><a href="category?id=7">Phụ kiện</a></li>
+                        <li><a href="category?id=8">Đồng phục thi đấu</a></li>
                         <li class="has-children">
-                            <a href="#">Sub Menu</a>
+                            <a>Giày Bóng Rổ</a>
                             <ul class="dropdown">
-                                <li><a href="#">Menu One</a></li>
-                                <li><a href="#">Menu Two</a></li>
-                                <li><a href="#">Menu Three</a></li>
+                                <li><a href="category?id=1">Giày Peak</a></li>
+                                <li><a href="category?id=2">Giày Nike</a></li>
+                                <li><a href="category?id=3">Giày Adidas</a></li>
+                                <li><a href="category?id=4">Giày Jordan</a></li>
+                                <li><a href="category?id=5">Giày Under Armour</a></li>
                             </ul>
                         </li>
                     </ul>
                 </li>
-                <li class="has-children">
-                    <a href="about.jsp">About</a>
-                    <ul class="dropdown">
-                        <li><a href="#">Menu One</a></li>
-                        <li><a href="#">Menu Two</a></li>
-                        <li><a href="#">Menu Three</a></li>
-                    </ul>
-                </li>
                 <li><a href="shop">Shop</a></li>
+                <li><a href="about.jsp">About</a></li>
                 <li><a href="contact.jsp">Contact</a></li>
                 <li class="has-children">
                     <a href="login.jsp">User</a>
