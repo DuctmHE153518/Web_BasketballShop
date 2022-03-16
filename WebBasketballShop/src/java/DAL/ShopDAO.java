@@ -20,8 +20,8 @@ import model.Product;
  *
  * @author Duc Tran
  */
-
 public class ShopDAO {
+
     Connection conn = null;
     PreparedStatement ps = null;
     ResultSet rs = null;
@@ -33,7 +33,7 @@ public class ShopDAO {
             conn = new DBContext().getConnection();//mo ket noi voi sql
             ps = conn.prepareStatement(sql);
             rs = ps.executeQuery();
-            while(rs.next()) {
+            while (rs.next()) {
                 Product p = new Product();
                 p.setId(rs.getString("product_id"));
                 p.setName(rs.getString("product_name"));
@@ -48,7 +48,7 @@ public class ShopDAO {
         }
         return products;
     }
-    
+
     public ArrayList<Category> getAllCategory() {
         ArrayList<Category> categorys = new ArrayList<>();
         String sql = "select * from Category";
@@ -56,7 +56,7 @@ public class ShopDAO {
             conn = new DBContext().getConnection();//mo ket noi voi sql
             ps = conn.prepareStatement(sql);
             rs = ps.executeQuery();
-            while(rs.next()) {
+            while (rs.next()) {
                 Category c = new Category();
                 c.setId(rs.getInt("category_id"));
                 c.setName(rs.getString("category_name"));
@@ -67,16 +67,16 @@ public class ShopDAO {
         }
         return categorys;
     }
-    
+
     public ArrayList<Product> getTrend() {
         ArrayList<Product> products = new ArrayList<>();
-        String sql = "select top 5 * from product \n" +
-                        "order by quantity asc";
+        String sql = "select top 5 * from product \n"
+                + "order by quantity asc";
         try {
             conn = new DBContext().getConnection();//mo ket noi voi sql
             ps = conn.prepareStatement(sql);
             rs = ps.executeQuery();
-            while(rs.next()) {
+            while (rs.next()) {
                 Product p = new Product();
                 p.setId(rs.getString("product_id"));
                 p.setName(rs.getString("product_name"));
@@ -90,17 +90,17 @@ public class ShopDAO {
         }
         return products;
     }
-    
+
     public ArrayList<Product> getProductCateId(String id) {
         ArrayList<Product> products = new ArrayList<>();
-        String sql = "select * from product \n" +
-                        "where category_id = ?";
+        String sql = "select * from product \n"
+                + "where category_id = ?";
         try {
             conn = new DBContext().getConnection();//mo ket noi voi sql
             ps = conn.prepareStatement(sql);
             ps.setString(1, id);
             rs = ps.executeQuery();
-            while(rs.next()) {
+            while (rs.next()) {
                 Product p = new Product();
                 p.setId(rs.getString("product_id"));
                 p.setName(rs.getString("product_name"));
@@ -115,18 +115,18 @@ public class ShopDAO {
         }
         return products;
     }
-    
+
     public Product getProductId(String id) {
-        String sql = "select * from product \n" +
-                        "where product_id = ?";
+        String sql = "select * from product \n"
+                + "where product_id = ?";
         try {
             conn = new DBContext().getConnection();//mo ket noi voi sql
             ps = conn.prepareStatement(sql);
             ps.setString(1, id);
             rs = ps.executeQuery();
-            while(rs.next()) {
-                return new Product(rs.getString(1), rs.getString(3), 
-                        rs.getDouble(4), rs.getString(5), 
+            while (rs.next()) {
+                return new Product(rs.getString(1), rs.getString(3),
+                        rs.getDouble(4), rs.getString(5),
                         rs.getInt(6), rs.getString(7));
             }
         } catch (Exception ex) {
@@ -134,17 +134,17 @@ public class ShopDAO {
         }
         return null;
     }
-    
+
     public ArrayList<Product> searchName(String txtSearch) {
         ArrayList<Product> products = new ArrayList<>();
-        String sql = "select * from product\n" +
-                        "where [product_name] like ?";
+        String sql = "select * from product\n"
+                + "where [product_name] like ?";
         try {
             conn = new DBContext().getConnection();//mo ket noi voi sql
             ps = conn.prepareStatement(sql);
-            ps.setString(1, "%"+txtSearch+"%");
+            ps.setString(1, "%" + txtSearch + "%");
             rs = ps.executeQuery();
-            while(rs.next()) {
+            while (rs.next()) {
                 Product p = new Product();
                 p.setId(rs.getString("product_id"));
                 p.setName(rs.getString("product_name"));
@@ -159,48 +159,48 @@ public class ShopDAO {
         }
         return products;
     }
-    
+
     public Account login(String user, String pass) {
-        String sql = "select * from users\n" +
-                        "where [user_name] = ?\n" +
-                        "and [user_pass] = ?";
+        String sql = "select * from users\n"
+                + "where [user_name] = ?\n"
+                + "and [user_pass] = ?";
         try {
             conn = new DBContext().getConnection();//mo ket noi voi sql
             ps = conn.prepareStatement(sql);
             ps.setString(1, user);
             ps.setString(2, pass);
             rs = ps.executeQuery();
-            while(rs.next()) {
-                return new Account(rs.getInt(1), rs.getString(2), 
-                        rs.getString(3), rs.getString(4), 
+            while (rs.next()) {
+                return new Account(rs.getInt(1), rs.getString(2),
+                        rs.getString(3), rs.getString(4),
                         rs.getString(5));
             }
         } catch (Exception e) {
         }
         return null;
     }
-    
+
     public Account checkAccount(String user) {
-        String sql = "select * from users\n" +
-                        "where [user_name] = ?";
+        String sql = "select * from users\n"
+                + "where [user_name] = ?";
         try {
             conn = new DBContext().getConnection();//mo ket noi voi sql
             ps = conn.prepareStatement(sql);
             ps.setString(1, user);
             rs = ps.executeQuery();
-            while(rs.next()) {
-                return new Account(rs.getInt(1), rs.getString(2), 
-                        rs.getString(3), rs.getString(4), 
+            while (rs.next()) {
+                return new Account(rs.getInt(1), rs.getString(2),
+                        rs.getString(3), rs.getString(4),
                         rs.getString(5));
             }
         } catch (Exception e) {
         }
         return null;
     }
-    
+
     public void signup(String user, String email, String pass) {
-        String sql = "insert into [users]\n" +
-                        "values (?,?,?,'FALSE')";
+        String sql = "insert into [users]\n"
+                + "values (?,?,?,'FALSE')";
         try {
             conn = new DBContext().getConnection();//mo ket noi voi sql
             ps = conn.prepareStatement(sql);
@@ -211,16 +211,16 @@ public class ShopDAO {
         } catch (Exception e) {
         }
     }
-    
+
     public ArrayList<Product> getArrangePriceDesc() {
         ArrayList<Product> products = new ArrayList<>();
-        String sql = "SELECT * FROM product\n" +
-                        "order by product_price desc";
+        String sql = "SELECT * FROM product\n"
+                + "order by product_price desc";
         try {
             conn = new DBContext().getConnection();//mo ket noi voi sql
             ps = conn.prepareStatement(sql);
             rs = ps.executeQuery();
-            while(rs.next()) {
+            while (rs.next()) {
                 Product p = new Product();
                 p.setId(rs.getString("product_id"));
                 p.setName(rs.getString("product_name"));
@@ -234,16 +234,16 @@ public class ShopDAO {
         }
         return products;
     }
-    
+
     public ArrayList<Product> getArrangePriceAsc() {
         ArrayList<Product> products = new ArrayList<>();
-        String sql = "SELECT * FROM product\n" +
-                        "order by product_price asc";
+        String sql = "SELECT * FROM product\n"
+                + "order by product_price asc";
         try {
             conn = new DBContext().getConnection();//mo ket noi voi sql
             ps = conn.prepareStatement(sql);
             rs = ps.executeQuery();
-            while(rs.next()) {
+            while (rs.next()) {
                 Product p = new Product();
                 p.setId(rs.getString("product_id"));
                 p.setName(rs.getString("product_name"));
@@ -257,13 +257,13 @@ public class ShopDAO {
         }
         return products;
     }
-    
-    public List<Product> getListByPage(List<Product> list, int start, int end){
-        ArrayList<Product> arr =new ArrayList<>();
-        for(int i=start; i<end; i++){
+
+    public List<Product> getListByPage(List<Product> list, int start, int end) {
+        ArrayList<Product> arr = new ArrayList<>();
+        for (int i = start; i < end; i++) {
             arr.add(list.get(i));
         }
         return arr;
     }
-    
+
 }
