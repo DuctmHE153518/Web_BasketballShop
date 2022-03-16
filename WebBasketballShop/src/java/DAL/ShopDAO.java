@@ -258,7 +258,6 @@ public class ShopDAO {
         return products;
     }
     
-    
     public List<Product> getListByPage(List<Product> list, int start, int end){
         ArrayList<Product> arr =new ArrayList<>();
         for(int i=start; i<end; i++){

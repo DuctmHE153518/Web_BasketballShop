@@ -28,7 +28,7 @@
                     <div class="site-top-icons">
                         <ul>
                             <c:if test="${sessionScope.acc != null}">
-                                <li><a href="#">User: ${sessionScope.acc.name}<span class="icon icon-person"></span></a></li>
+                                <li><a href="#">${sessionScope.acc.name}<span class="icon icon-person"></span></a></li>
                                     </c:if>
                             <li><a href="#"><span class="icon icon-heart-o"></span></a></li>
                             <li>
@@ -71,10 +71,8 @@
                 </li>
                 
                 <li><a href="shop">Shop</a></li>
-                <li><a href="about.jsp">About</a></li>
-                <li><a href="contact.jsp">Contact</a></li>
                 <li class="has-children">
-                    <a href="login.jsp">User</a>
+                    <a>User</a>
                     <ul class="dropdown">
                         <c:if test="${sessionScope.acc == null}">
                             <li><a href="login.jsp">Login</a></li>

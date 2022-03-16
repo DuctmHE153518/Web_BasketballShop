@@ -4,6 +4,7 @@
     Author     : Duc Tran
 --%>
 
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -66,7 +67,10 @@
                                             <div class="block-4-text p-4">
                                                 <h3><a href="detail?pid=${o.id}">${o.name}</a></h3>
                                                 <p class="mb-0">Hàng replica</p>
-                                                <p class="text-primary font-weight-bold">${o.price}</p>
+                                                <p class="text-primary font-weight-bold" >
+                                                    <fmt:setLocale value = "vi_VN"/>
+                                                    <fmt:formatNumber value="${o.price}" type="currency" />
+                                                </p>
                                             </div>
                                         </div>
                                     </div>

@@ -4,6 +4,7 @@
     Author     : Duc Tran
 --%>
 
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -23,7 +24,6 @@
         <link rel="stylesheet" href="css/owl.theme.default.min.css">
 
 
-
         <link rel="stylesheet" href="css/aos.css">
 
         <link rel="stylesheet" href="css/style.css">
@@ -36,21 +36,24 @@
                 <div class="bg-light py-3">
                     <div class="container">
                         <div class="row">
-                            <div class="col-md-12 mb-0"><a href="index.jsp">Home</a> <span class="mx-2 mb-0">/</span> <a href="/WebBasketballShop/shop">Shop</a> <span class="mx-2 mb-0">/</span> <strong class="text-black">Tank Top T-Shirt</strong></div>
-                        </div>
+                            <div class="col-md-12 mb-0"><a href="home">Home</a> <span class="mx-2 mb-0">/</span> <a href="shop">Shop</a> <span class="mx-2 mb-0">/</span> <strong class="text-black">${detail.name}</strong></div>
                     </div>
-                </div>  
+                </div>
+            </div>  
 
-                <div class="site-section">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <img src="${detail.img}" alt="Image" class="img-fluid">
+            <div class="site-section">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <img src="${detail.img}" alt="Image" class="img-fluid">
                         </div>
                         <div class="col-md-6">
                             <h2 class="text-black">${detail.name}</h2>
                             <p class="mb-4">${detail.describe}</p>
-                            <p><strong class="text-primary h4">${detail.price}</strong></p>
+                            <p><strong class="text-primary h4">
+                                    <fmt:setLocale value = "vi_VN"/>
+                                    <fmt:formatNumber value="${detail.price}" type="currency" />
+                                </strong></p>
                             <div class="mb-1 d-flex">
                                 <label for="option-sm" class="d-flex mr-3 mb-3">
                                     <span class="d-inline-block mr-2" style="top:-2px; position: relative;"><input type="radio" id="option-sm" name="shop-sizes"></span> <span class="d-inline-block text-black">Small</span>
@@ -75,10 +78,8 @@
                                         <button class="btn btn-outline-primary js-btn-plus" type="button">&plus;</button>
                                     </div>
                                 </div>
-
                             </div>
                             <p><a href="cart.jsp" class="buy-now btn btn-sm btn-primary">Add To Cart</a></p>
-
                         </div>
                     </div>
                 </div>
@@ -104,7 +105,10 @@
                                             <div class="block-4-text p-4">
                                                 <h3><a href="detail?pid=${o.id}">${o.name}</a></h3>
                                                 <p class="mb-0">Hàng replica</p>
-                                                <p class="text-primary font-weight-bold">${o.price}</p>
+                                                <p class="text-primary font-weight-bold" >
+                                                    <fmt:setLocale value = "vi_VN"/>
+                                                    <fmt:formatNumber value="${o.price}" type="currency" />
+                                                </p>
                                             </div>
                                         </div>
                                     </div>

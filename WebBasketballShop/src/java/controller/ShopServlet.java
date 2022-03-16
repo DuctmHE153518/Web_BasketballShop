@@ -39,10 +39,10 @@ public class ShopServlet extends HttpServlet {
         ShopDAO db = new ShopDAO();
         ArrayList<Product> products = db.getAllProduct();
         ArrayList<Category> categorys = db.getAllCategory();
-        ///////////
+
         int page, numberpage = 6;
         int size = products.size();
-        int num=(size%10==0?(size/10):(size/10)+1);
+        int num=(size%numberpage==0?(size/numberpage):(size/numberpage)+1);
         String xpage = request.getParameter("page");
         if(xpage==null){
             page=1;
@@ -53,11 +53,9 @@ public class ShopServlet extends HttpServlet {
         start=(page-1)*numberpage;
         end=Math.min(page*numberpage, size);
         List<Product> list = db.getListByPage(products, start, end);
-        request.setAttribute("products", list);
+        request.setAttribute("listP", list);
         request.setAttribute("page", page);
         request.setAttribute("num", num);
-        //////////
-        request.setAttribute("listP", products);
         request.setAttribute("listC", categorys);
         request.getRequestDispatcher("shop.jsp").forward(request, response);
     }
