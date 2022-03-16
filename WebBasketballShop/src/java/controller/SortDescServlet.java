@@ -7,8 +7,8 @@ package controller;
 
 import DAL.ShopDAO;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
-import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -21,8 +21,8 @@ import model.Product;
  *
  * @author Duc Tran
  */
-@WebServlet(name = "ShopServlet", urlPatterns = {"/shop"})
-public class ShopServlet extends HttpServlet {
+@WebServlet(name = "SortDescServlet", urlPatterns = {"/sortdesc"})
+public class SortDescServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,28 +36,12 @@ public class ShopServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        response.setContentType("text/html;charset=UTF-8");
         ShopDAO db = new ShopDAO();
-        ArrayList<Product> products = db.getAllProduct();
+        ArrayList<Product> arranges = db.getArrangePriceDesc();
         ArrayList<Category> categorys = db.getAllCategory();
-        ///////////
-        int page, numberpage = 6;
-        int size = products.size();
-        int num=(size%10==0?(size/10):(size/10)+1);
-        String xpage = request.getParameter("page");
-        if(xpage==null){
-            page=1;
-        }else{
-            page = Integer.parseInt(xpage);
-        }
-        int start, end;
-        start=(page-1)*numberpage;
-        end=Math.min(page*numberpage, size);
-        List<Product> list = db.getListByPage(products, start, end);
-        request.setAttribute("products", list);
-        request.setAttribute("page", page);
-        request.setAttribute("num", num);
-        //////////
-        request.setAttribute("listP", products);
+        
+        request.setAttribute("listP", arranges);
         request.setAttribute("listC", categorys);
         request.getRequestDispatcher("shop.jsp").forward(request, response);
     }

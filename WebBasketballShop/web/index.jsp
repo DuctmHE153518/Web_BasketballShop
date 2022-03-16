@@ -28,7 +28,6 @@
         <link rel="stylesheet" href="css/style.css">
     </head>
     <body>
-
         <div class="site-wrap">
             <jsp:include page="header.jsp"></jsp:include>
                 <div class="site-blocks-cover" style="background-image: url(images/ballershop.png);" data-aos="fade">
@@ -39,49 +38,9 @@
                                 <div class="intro-text text-center text-md-left">
                                     <p class="mb-4">Some people want it to happen, some wish it would happen, and others make it happen.</p>
                                     <p>
-                                        <a href="/WebBasketballShop/shop" class="btn btn-sm btn-primary">Shop Now</a>
+                                        <a href="shop" class="btn btn-sm btn-primary">Shop Now</a>
                                     </p>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="site-section site-blocks-2">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-sm-6 col-md-6 col-lg-4 mb-4 mb-lg-0" data-aos="fade" data-aos-delay="">
-                                <a class="block-2-item" href="#">
-                                    <figure class="image">
-                                        <img src="images/women.jpg" alt="" class="img-fluid">
-                                    </figure>
-                                    <div class="text">
-                                        <span class="text-uppercase">Collections</span>
-                                        <h3>Women</h3>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-sm-6 col-md-6 col-lg-4 mb-5 mb-lg-0" data-aos="fade" data-aos-delay="100">
-                                <a class="block-2-item" href="#">
-                                    <figure class="image">
-                                        <img src="images/children.jpg" alt="" class="img-fluid">
-                                    </figure>
-                                    <div class="text">
-                                        <span class="text-uppercase">Collections</span>
-                                        <h3>Children</h3>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-sm-6 col-md-6 col-lg-4 mb-5 mb-lg-0" data-aos="fade" data-aos-delay="200">
-                                <a class="block-2-item" href="#">
-                                    <figure class="image">
-                                        <img src="images/men.jpg" alt="" class="img-fluid">
-                                    </figure>
-                                    <div class="text">
-                                        <span class="text-uppercase">Collections</span>
-                                        <h3>Men</h3>
-                                    </div>
-                                </a>
                             </div>
                         </div>
                     </div>
@@ -127,13 +86,13 @@
                     </div>
                     <div class="row align-items-center">
                         <div class="col-md-12 col-lg-7 mb-5">
-                            <a href="#"><img src="images/blog_1.jpg" alt="Image placeholder" class="img-fluid rounded"></a>
+                            <a href="#"><img src="images/sale.png" alt="Image placeholder" class="img-fluid rounded"></a>
                         </div>
                         <div class="col-md-12 col-lg-5 text-center pl-md-5">
                             <h2><a href="#">Siêu Sale 25% các sản phẩm của PEAK</a></h2>
                             <p class="post-meta mb-4">By <a href="#">PEAK VietNam</a> <span class="block-8-sep">&bullet;</span> Ngày 1 tháng 4, 2022</p>
                             <p>Siêu Sale ngày hội giảm giá đến từ nhà tài trợ PEAK Việt Nam, giảm giá tất cả các sản phẩm PEAK từ 5% - 25% trong ngày 1 tháng 4 năm 2022. HIện tại các bạn có thể đến cửa hàng để tham khảo các sản phẩm khác. </p>
-                            <p><a href="index.jsp" class="btn btn-primary btn-sm">Shop Now</a></p>
+                            <p><a href="shop" class="btn btn-primary btn-sm">Shop Now</a></p>
                         </div>
                     </div>
                 </div>

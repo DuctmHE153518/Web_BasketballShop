@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import model.Account;
@@ -210,4 +211,60 @@ public class ShopDAO {
         } catch (Exception e) {
         }
     }
+    
+    public ArrayList<Product> getArrangePriceDesc() {
+        ArrayList<Product> products = new ArrayList<>();
+        String sql = "SELECT * FROM product\n" +
+                        "order by product_price desc";
+        try {
+            conn = new DBContext().getConnection();//mo ket noi voi sql
+            ps = conn.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while(rs.next()) {
+                Product p = new Product();
+                p.setId(rs.getString("product_id"));
+                p.setName(rs.getString("product_name"));
+                p.setPrice(rs.getDouble("product_price"));
+                p.setDescribe(rs.getString("product_describe"));
+                p.setQuantity(rs.getInt("quantity"));
+                p.setImg(rs.getString("product_img"));
+                products.add(p);
+            }
+        } catch (Exception e) {
+        }
+        return products;
+    }
+    
+    public ArrayList<Product> getArrangePriceAsc() {
+        ArrayList<Product> products = new ArrayList<>();
+        String sql = "SELECT * FROM product\n" +
+                        "order by product_price asc";
+        try {
+            conn = new DBContext().getConnection();//mo ket noi voi sql
+            ps = conn.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while(rs.next()) {
+                Product p = new Product();
+                p.setId(rs.getString("product_id"));
+                p.setName(rs.getString("product_name"));
+                p.setPrice(rs.getDouble("product_price"));
+                p.setDescribe(rs.getString("product_describe"));
+                p.setQuantity(rs.getInt("quantity"));
+                p.setImg(rs.getString("product_img"));
+                products.add(p);
+            }
+        } catch (Exception e) {
+        }
+        return products;
+    }
+    
+    
+    public List<Product> getListByPage(List<Product> list, int start, int end){
+        ArrayList<Product> arr =new ArrayList<>();
+        for(int i=start; i<end; i++){
+            arr.add(list.get(i));
+        }
+        return arr;
+    }
+    
 }

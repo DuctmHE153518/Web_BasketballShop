@@ -29,7 +29,7 @@
                         <ul>
                             <c:if test="${sessionScope.acc != null}">
                                 <li><a href="#">User: ${sessionScope.acc.name}<span class="icon icon-person"></span></a></li>
-                            </c:if>
+                                    </c:if>
                             <li><a href="#"><span class="icon icon-heart-o"></span></a></li>
                             <li>
                                 <a href="cart.jsp" class="site-cart">
@@ -38,19 +38,21 @@
                                 </a>
                             </li> 
                             <li class="d-inline-block d-md-none ml-md-0"><a href="#" class="site-menu-toggle js-menu-toggle">
-                                    <span class="icon-menu"></span></a></li>
+                                    <span class="icon-menu"></span></a>
+                            </li>
                         </ul>
                     </div> 
                 </div>
 
             </div>
         </div>
-    </div> 
+    </div>
+                    
     <nav class="site-navigation text-right text-md-center" role="navigation">
         <div class="container">
             <ul class="site-menu js-clone-nav d-none d-md-block">
                 <li class="has-children active">
-                    <a href="index.jsp">Home</a>
+                    <a href="home">Home</a>
                     <ul class="dropdown">
                         <li><a href="category?id=6">Bóng rổ</a></li>
                         <li><a href="category?id=7">Phụ kiện</a></li>
@@ -67,6 +69,7 @@
                         </li>
                     </ul>
                 </li>
+                
                 <li><a href="shop">Shop</a></li>
                 <li><a href="about.jsp">About</a></li>
                 <li><a href="contact.jsp">Contact</a></li>
@@ -75,15 +78,16 @@
                     <ul class="dropdown">
                         <c:if test="${sessionScope.acc == null}">
                             <li><a href="login.jsp">Login</a></li>
-                        </c:if>
+                            </c:if>
+
                         <c:if test="${sessionScope.acc != null}">
                             <li><a href="logout">logout</a></li>
-                        </c:if>
-                            
+                            </c:if>
+
                         <c:if test="${sessionScope.acc.isAdmin == 'TRUE'}">
                             <li><a href="#">Manager Account</a></li>
                             <li><a href="#">Manager Product</a></li>
-                        </c:if>
+                            </c:if>
                     </ul>
                 </li>
             </ul>
