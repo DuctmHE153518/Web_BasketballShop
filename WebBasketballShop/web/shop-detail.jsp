@@ -10,7 +10,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>Baller Shop &mdash; Colorlib e-Commerce Template</title>
+        <title>Baller Shop</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -55,18 +55,12 @@
                                     <fmt:formatNumber value="${detail.price}" type="currency" />
                                 </strong></p>
                             <div class="mb-1 d-flex">
-                                <label for="option-sm" class="d-flex mr-3 mb-3">
-                                    <span class="d-inline-block mr-2" style="top:-2px; position: relative;"><input type="radio" id="option-sm" name="shop-sizes"></span> <span class="d-inline-block text-black">Small</span>
-                                </label>
-                                <label for="option-md" class="d-flex mr-3 mb-3">
-                                    <span class="d-inline-block mr-2" style="top:-2px; position: relative;"><input type="radio" id="option-md" name="shop-sizes"></span> <span class="d-inline-block text-black">Medium</span>
-                                </label>
-                                <label for="option-lg" class="d-flex mr-3 mb-3">
-                                    <span class="d-inline-block mr-2" style="top:-2px; position: relative;"><input type="radio" id="option-lg" name="shop-sizes"></span> <span class="d-inline-block text-black">Large</span>
-                                </label>
-                                <label for="option-xl" class="d-flex mr-3 mb-3">
-                                    <span class="d-inline-block mr-2" style="top:-2px; position: relative;"><input type="radio" id="option-xl" name="shop-sizes"></span> <span class="d-inline-block text-black"> Extra Large</span>
-                                </label>
+                                <c:forEach items="${details}" var="s">
+                                    <label for="option-sm" class="d-flex mr-3 mb-3">
+                                        <span class="d-inline-block mr-2" style="top:-2px; position: relative;"><input type="radio" id="option-sm" name="shop-sizes"></span> <span class="d-inline-block text-black">${s.size}</span>
+                                    </label>
+                                </c:forEach>
+
                             </div>
                             <div class="mb-5">
                                 <div class="input-group mb-3" style="max-width: 120px;">

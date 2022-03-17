@@ -15,6 +15,7 @@ import java.util.logging.Logger;
 import model.Account;
 import model.Category;
 import model.Product;
+import model.Size;
 
 /**
  *
@@ -133,6 +134,27 @@ public class ShopDAO {
             Logger.getLogger(ShopDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
+    }
+    
+    public ArrayList<Size> getProductSizeId(String id) {
+        ArrayList<Size> sizes = new ArrayList<>();
+        String sql = "select * from product_size\n" +
+                    "where product_id = ?";
+        try {
+            conn = new DBContext().getConnection();//mo ket noi voi sql
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, id);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                Size s = new Size();
+                s.setId(rs.getString("product_id"));
+                s.setSize(rs.getString("size"));
+                sizes.add(s);
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(ShopDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return sizes;
     }
 
     public ArrayList<Product> searchName(String txtSearch) {
@@ -265,5 +287,7 @@ public class ShopDAO {
         }
         return arr;
     }
+    
+    
 
 }

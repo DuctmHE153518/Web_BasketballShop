@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.Product;
+import model.Size;
 
 /**
  *
@@ -37,10 +38,12 @@ public class DetailServlet extends HttpServlet {
         String id = request.getParameter("pid");
         ShopDAO db = new ShopDAO();
         Product p = db.getProductId(id);
+        ArrayList<Size> s = db.getProductSizeId(id);
         ArrayList<Product> trends = db.getTrend();
         
         request.setAttribute("listT", trends);
         request.setAttribute("detail", p);
+        request.setAttribute("details", s);
         request.getRequestDispatcher("shop-detail.jsp").forward(request, response);
         
     }
