@@ -16,7 +16,6 @@ public class Product {
     private String describe;
     private int quantity;
     private String img;
-    private Size size;
 
     public Product() {
     }
@@ -28,16 +27,6 @@ public class Product {
         this.describe = describe;
         this.quantity = quantity;
         this.img = img;
-    }
-
-    public Product(String id, String name, double price, String describe, int quantity, String img, Size size) {
-        this.id = id;
-        this.name = name;
-        this.price = price;
-        this.describe = describe;
-        this.quantity = quantity;
-        this.img = img;
-        this.size = size;
     }
 
     public String getId() {

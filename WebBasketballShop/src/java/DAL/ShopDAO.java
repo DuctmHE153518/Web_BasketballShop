@@ -135,11 +135,11 @@ public class ShopDAO {
         }
         return null;
     }
-    
+
     public ArrayList<Size> getProductSizeId(String id) {
         ArrayList<Size> sizes = new ArrayList<>();
-        String sql = "select * from product_size\n" +
-                    "where product_id = ?";
+        String sql = "select * from product_size\n"
+                + "where product_id = ?";
         try {
             conn = new DBContext().getConnection();//mo ket noi voi sql
             ps = conn.prepareStatement(sql);
@@ -287,7 +287,57 @@ public class ShopDAO {
         }
         return arr;
     }
-    
-    
+
+    public void deleteProduct(String id) {
+        String sql = "delete from product \n"
+                + "where product_id = ?";
+        try {
+            conn = new DBContext().getConnection();//mo ket noi voi sql
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, id);
+            ps.executeUpdate();
+        } catch (Exception e) {
+        }
+    }
+
+    public void insertProduct(String id, String name, String img, String price,
+            String describe, String quantity, String category) {
+        String sql = "INSERT [product] ([product_id], [category_id], [product_name], \n"
+                + "[product_price], [product_describe], [quantity], [product_img]) \n"
+                + "VALUES(?,?,?,?,?,?,?)";
+        try {
+            conn = new DBContext().getConnection();//mo ket noi voi sql
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, id);
+            ps.setString(2, category);
+            ps.setString(3, name);
+            ps.setString(4, price);
+            ps.setString(5, describe);
+            ps.setString(6, quantity);
+            ps.setString(7, img);
+            ps.executeUpdate();
+        } catch (Exception e) {
+        }
+    }
+
+    public void editProduct(String id, String name, String img, String price,
+            String describe, String quantity) {
+        String sql = "update product\n"
+                + "set product_name = ?, product_price = ?, \n"
+                + "product_describe = ?, quantity = ?, product_img = ?\n"
+                + "where product_id = ?";
+        try {
+            conn = new DBContext().getConnection();//mo ket noi voi sql
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, name);
+            ps.setString(2, price);
+            ps.setString(3, describe);
+            ps.setString(4, quantity);
+            ps.setString(5, img);
+            ps.setString(6, id);
+            ps.executeUpdate();
+        } catch (Exception e) {
+        }
+    }
 
 }

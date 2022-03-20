@@ -7,24 +7,19 @@ package controller;
 
 import DAL.ShopDAO;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import model.Account;
-import model.Category;
-import model.Product;
 
 /**
  *
  * @author Duc Tran
  */
-@WebServlet(name = "ManagerServlet", urlPatterns = {"/manager"})
-public class ManagerServlet extends HttpServlet {
+@WebServlet(name = "EditServlet", urlPatterns = {"/edit"})
+public class EditServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -38,32 +33,16 @@ public class ManagerServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        HttpSession session = request.getSession();
-        Account a = (Account) session.getAttribute("acc");
-        int id = a.getId();
+        String eid = request.getParameter("id");
+        String ename = request.getParameter("name");
+        String eimage = request.getParameter("image");
+        String eprice = request.getParameter("price");
+        String edescribe = request.getParameter("describe");
+        String equantity = request.getParameter("quantity");
+     
         ShopDAO db = new ShopDAO();
-        ArrayList<Product> products = db.getAllProduct();
-        ArrayList<Category> categorys = db.getAllCategory();
-        
-        int page, numberpage = 5;
-        int size = products.size();
-        int num=(size%numberpage==0?(size/numberpage):(size/numberpage)+1);
-        String xpage = request.getParameter("page");
-        if(xpage==null){
-            page=1;
-        }else{
-            page = Integer.parseInt(xpage);
-        }
-        int start, end;
-        start=(page-1)*numberpage;
-        end=Math.min(page*numberpage, size);
-        List<Product> list = db.getListByPage(products, start, end);
-        request.setAttribute("listP", list);
-        request.setAttribute("page", page);
-        request.setAttribute("num", num);
-        request.setAttribute("listC", categorys);
-        request.getRequestDispatcher("manager-product.jsp").forward(request, response);
-        
+        db.editProduct(eid, ename, eimage, eprice, edescribe, equantity);
+        response.sendRedirect("manager");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
