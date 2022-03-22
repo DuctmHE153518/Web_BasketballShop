@@ -1,6 +1,6 @@
 <%-- 
-    Document   : manager-account
-    Created on : Mar 22, 2022, 12:15:50 AM
+    Document   : manager-billdetail
+    Created on : Mar 22, 2022, 10:08:34 AM
     Author     : Duc Tran
 --%>
 
@@ -36,7 +36,7 @@
                 <div class="bg-light py-3">
                     <div class="container">
                         <div class="row">
-                            <div class="col-md-12 mb-0"><a href="index.jsp">Home</a> <span class="mx-2 mb-0">/</span> <strong class="text-black">Manager Account</strong></div>
+                            <div class="col-md-12 mb-0"><a href="index.jsp">Home</a> <span class="mx-2 mb-0">/</span> <strong class="text-black">Manager Bill Detail</strong></div>
                         </div>
                     </div>
                 </div>
@@ -50,26 +50,28 @@
                                         <thead>
                                             <tr>
                                                 <th>Id</th>
-                                                <th>UserName</th>
-                                                <th>Email</th>
-                                                <th>Password</th>
-                                                <th>Is Admin</th>
+                                                <th>Bill Id</th>
+                                                <th>Product Id</th>
+                                                <th>quantity</th>
+                                                <th>Size</th>
+                                                <th>Price</th>
                                                 <th></th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                        <c:forEach items="${listA}" var="o">
+                                        <c:forEach items="${listB}" var="o">
                                             <tr>
                                                 <td>${o.id}</td>
-                                                <td>${o.name}</td>
-                                                <td>${o.email}</td>
-                                                <td>${o.pass}</td>
-                                                <td>${o.isAdmin}</td>
+                                                <td>${o.bid}</td>
+                                                <td>${o.pid}</td>
+                                                <td>${o.quantity}</td>
+                                                <td>${o.size}</td>
+                                                <td>${o.price}</td>
                                                 <td>
-                                                    <a href="loadacc?pid=${o.id}" class="btn btn-primary btn-sm">Edit</a>
+                                                    <a href="loadbd?pid=${o.id}" class="btn btn-primary btn-sm">Edit</a>
                                                 </td>
                                                 <td>
-                                                    <a href="deleteacc?pid=${o.id}" onclick="return confirm('Are you sure you want to delete this item?');" class="btn btn-primary btn-sm">Delete</a>
+                                                    <a href="deletebd?pid=${o.id}" onclick="return confirm('Are you sure you want to delete this item?');" class="btn btn-primary btn-sm">Delete</a>
                                                 </td>
                                             </tr>
                                         </c:forEach>

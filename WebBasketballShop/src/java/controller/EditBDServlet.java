@@ -7,6 +7,7 @@ package controller;
 
 import DAL.ShopDAO;
 import java.io.IOException;
+import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -17,8 +18,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Duc Tran
  */
-@WebServlet(name = "DeleteServlet", urlPatterns = {"/delete"})
-public class DeleteServlet extends HttpServlet {
+@WebServlet(name = "EditBDServlet", urlPatterns = {"/editbd"})
+public class EditBDServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -32,10 +33,16 @@ public class DeleteServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String id = request.getParameter("pid");
+        String eid = request.getParameter("id");
+        String ebid = request.getParameter("bid");
+        String epid = request.getParameter("pid");
+        String equantity = request.getParameter("quantity");
+        String esize = request.getParameter("size");
+        String eprice = request.getParameter("price");
+     
         ShopDAO db = new ShopDAO();
-        db.deleteProduct(id);
-        response.sendRedirect("manager");
+        db.editBillDetail(eid, ebid, epid, equantity, esize, eprice);
+        response.sendRedirect("managerbd");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

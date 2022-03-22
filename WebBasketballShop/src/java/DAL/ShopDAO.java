@@ -13,6 +13,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import model.Account;
+import model.BillDetail;
 import model.Category;
 import model.Product;
 import model.Size;
@@ -424,6 +425,97 @@ public class ShopDAO {
             ps.setString(3, pass);
             ps.setString(4, isadmin);
             ps.setString(5, id);
+            ps.executeUpdate();
+        } catch (Exception e) {
+        }
+    }
+
+    public ArrayList<BillDetail> getAllBillDetail() {
+        ArrayList<BillDetail> billdetails = new ArrayList<>();
+        String sql = "select * from bill_detail";
+        try {
+            conn = new DBContext().getConnection();//mo ket noi voi sql
+            ps = conn.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                BillDetail bd = new BillDetail();
+                bd.setId(rs.getInt("detail_id"));
+                bd.setBid(rs.getInt("bill_id"));
+                bd.setPid(rs.getString("product_id"));
+                bd.setQuantity(rs.getInt("quantity"));
+                bd.setSize(rs.getString("size"));
+                bd.setPrice(rs.getInt("price"));
+                billdetails.add(bd);
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(ShopDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return billdetails;
+    }
+
+    public BillDetail getBillDetailId(String id) {
+        String sql = "select * from bill_detail\n"
+                + "where detail_id = ?";
+        try {
+            conn = new DBContext().getConnection();//mo ket noi voi sql
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, id);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                return new BillDetail(rs.getInt(1), rs.getInt(2), rs.getString(3),
+                        rs.getInt(4), rs.getString(5), rs.getInt(6));
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(ShopDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+
+    public void deleteBillDetail(String id) {
+        String sql = "delete from users \n"
+                + "where user_id = ?";
+        try {
+            conn = new DBContext().getConnection();//mo ket noi voi sql
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, id);
+            ps.executeUpdate();
+        } catch (Exception e) {
+        }
+    }
+
+    public void insertBillDetail(String id, String name, String email,
+            String pass, String isadmin) {
+        String sql = "INSERT [users] ([user_id], [user_name], \n"
+                + "[user_email], [user_pass], [isAdmin]) \n"
+                + "VALUES(?, ?, ?, ?, ?)";
+        try {
+            conn = new DBContext().getConnection();//mo ket noi voi sql
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, id);
+            ps.setString(2, name);
+            ps.setString(3, email);
+            ps.setString(4, pass);
+            ps.setString(5, isadmin);
+            ps.executeUpdate();
+        } catch (Exception e) {
+        }
+    }
+
+    public void editBillDetail(String id, String bid, String pid,
+            String quantity, String size, String price) {
+        String sql = "update bill_detail \n"
+                + "set bill_id = ?, product_id = ?, \n"
+                + "quantity = ?, size = ?, price = ?\n"
+                + "where detail_id = ?";
+        try {
+            conn = new DBContext().getConnection();//mo ket noi voi sql
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, bid);
+            ps.setString(2, pid);
+            ps.setString(3, quantity);
+            ps.setString(4, size);
+            ps.setString(5, price);
+            ps.setString(6, id);
             ps.executeUpdate();
         } catch (Exception e) {
         }

@@ -85,6 +85,7 @@
                         <c:if test="${sessionScope.acc.isAdmin == 'TRUE'}">
                             <li><a href="manageracc">Manager Account</a></li>
                             <li><a href="manager">Manager Product</a></li>
+                            <li><a href="managerbd">Manager Bill Detail</a></li>
                             </c:if>
                     </ul>
                 </li>

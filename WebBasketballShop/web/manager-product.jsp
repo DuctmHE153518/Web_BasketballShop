@@ -55,7 +55,7 @@
                                                 <th>Price</th>
                                                 <th>Describe</th>
                                                 <th>Quantity</th>
-                                                <th>Action</th>
+                                                <th></th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -73,8 +73,9 @@
                                                 <td>${o.quantity}</td>
                                                 <td>
                                                     <a href="load?pid=${o.id}" class="btn btn-primary btn-sm">Edit</a>
-                                                    <br>
-                                                    <a href="delete" onclick="showMess(${o.id})" class="btn btn-primary btn-sm">Delete</a>
+                                                </td>
+                                                <td>
+                                                    <a href="delete?pid=${o.id}" onclick="return confirm('Are you sure you want to delete this item?');" class="btn btn-primary btn-sm">Delete</a>
                                                 </td>
                                             </tr>
                                         </c:forEach>
@@ -174,16 +175,7 @@
         <script src="js/owl.carousel.min.js"></script>
         <script src="js/jquery.magnific-popup.min.js"></script>
         <script src="js/aos.js"></script>
-
         <script src="js/main.js"></script>
 
     </body>
-    <script>
-        function showMess(id){
-             var option = confirm('delete?');
-             if(option === true){
-                 window.location.href = 'delete?pid='+id;
-            }
-        }
-    </script>
 </html>

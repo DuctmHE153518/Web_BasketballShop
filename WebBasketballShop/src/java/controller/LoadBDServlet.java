@@ -12,13 +12,14 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.BillDetail;
 
 /**
  *
  * @author Duc Tran
  */
-@WebServlet(name = "DeleteServlet", urlPatterns = {"/delete"})
-public class DeleteServlet extends HttpServlet {
+@WebServlet(name = "LoadBDServlet", urlPatterns = {"/loadbd"})
+public class LoadBDServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,8 +35,10 @@ public class DeleteServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         String id = request.getParameter("pid");
         ShopDAO db = new ShopDAO();
-        db.deleteProduct(id);
-        response.sendRedirect("manager");
+        BillDetail p = db.getBillDetailId(id);
+        
+        request.setAttribute("detail", p);
+        request.getRequestDispatcher("editbd.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

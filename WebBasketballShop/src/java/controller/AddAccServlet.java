@@ -33,14 +33,14 @@ public class AddAccServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String aid = request.getParameter("id");
-        String aname = request.getParameter("name");
-        String aemail = request.getParameter("email");
-        String apass = request.getParameter("pass");
-        String aisadmin = request.getParameter("isadmin");
+        String id = request.getParameter("id");
+        String name = request.getParameter("name");
+        String email = request.getParameter("email");
+        String pass = request.getParameter("pass");
+        String isadmin = request.getParameter("isadmin");
         
         ShopDAO db = new ShopDAO();
-        db.insertAccount(aid, aname, aemail, apass, aisadmin);
+        db.insertAccount(id, name, email, pass, isadmin);
         response.sendRedirect("manageracc");
     }
 
