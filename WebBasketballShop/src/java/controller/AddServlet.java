@@ -32,6 +32,7 @@ public class AddServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        request.setCharacterEncoding("UTF-8");
         String aid = request.getParameter("id");
         String aname = request.getParameter("name");
         String aimage = request.getParameter("image");

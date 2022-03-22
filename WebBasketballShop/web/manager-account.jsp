@@ -36,7 +36,7 @@
                 <div class="bg-light py-3">
                     <div class="container">
                         <div class="row">
-                            <div class="col-md-12 mb-0"><a href="index.jsp">Home</a> <span class="mx-2 mb-0">/</span> <strong class="text-black">Manager Account</strong></div>
+                            <div class="col-md-12 mb-0"><a href="home">Home</a> <span class="mx-2 mb-0">/</span> <strong class="text-black">Manager Account</strong></div>
                         </div>
                     </div>
                 </div>
@@ -82,7 +82,7 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="row mb-5">
-                                <a href="#addAcc" class="btn btn-success" data-toggle="modal">
+                                <a href="#addEmployeeModal2" class="btn btn-success" data-toggle="modal">
                                     <i class="material-icons">&#xE147;</i> 
                                     <span>Add New Account</span>
                                 </a>
@@ -95,7 +95,7 @@
         <jsp:include page="footer.jsp"></jsp:include>
 
         <!-- Edit Modal HTML -->
-        <div id="addAcc" class="modal fade">
+        <div id="addEmployeeModal2" class="modal fade">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <form action="addacc" method="post">

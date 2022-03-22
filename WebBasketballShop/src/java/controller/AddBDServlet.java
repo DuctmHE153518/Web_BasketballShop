@@ -18,8 +18,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Duc Tran
  */
-@WebServlet(name = "DeleteBDServlet", urlPatterns = {"/deletebd"})
-public class DeleteBDServlet extends HttpServlet {
+@WebServlet(name = "AddBDServlet", urlPatterns = {"/addbd"})
+public class AddBDServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -33,9 +33,15 @@ public class DeleteBDServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String pid = request.getParameter("pid");
+        String aid = request.getParameter("id");
+        String abid = request.getParameter("bid");
+        String apid = request.getParameter("pid");
+        String aquantity = request.getParameter("quantity");
+        String asize = request.getParameter("size");
+        String aprice = request.getParameter("price");
+        
         ShopDAO db = new ShopDAO();
-        db.deleteBillDetail(pid);
+        db.insertBillDetail(aid, abid, apid, aquantity, asize, aprice);
         response.sendRedirect("managerbd");
     }
 

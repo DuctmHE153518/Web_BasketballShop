@@ -472,8 +472,8 @@ public class ShopDAO {
     }
 
     public void deleteBillDetail(String id) {
-        String sql = "delete from users \n"
-                + "where user_id = ?";
+        String sql = "delete from bill_detail\n"
+                + "where detail_id = ?";
         try {
             conn = new DBContext().getConnection();//mo ket noi voi sql
             ps = conn.prepareStatement(sql);
@@ -483,19 +483,20 @@ public class ShopDAO {
         }
     }
 
-    public void insertBillDetail(String id, String name, String email,
-            String pass, String isadmin) {
-        String sql = "INSERT [users] ([user_id], [user_name], \n"
-                + "[user_email], [user_pass], [isAdmin]) \n"
-                + "VALUES(?, ?, ?, ?, ?)";
+    public void insertBillDetail(String id, String bid, String pid,
+            String quantity, String size, String price) {
+        String sql = "INSERT [dbo].[bill_detail] \n"
+                + "([detail_id], [bill_id], [product_id], [quantity], [size], [price]) \n"
+                + "VALUES (?, ?, ?, ?, ?, ?)";
         try {
             conn = new DBContext().getConnection();//mo ket noi voi sql
             ps = conn.prepareStatement(sql);
             ps.setString(1, id);
-            ps.setString(2, name);
-            ps.setString(3, email);
-            ps.setString(4, pass);
-            ps.setString(5, isadmin);
+            ps.setString(2, bid);
+            ps.setString(3, pid);
+            ps.setString(4, quantity);
+            ps.setString(5, size);
+            ps.setString(6, price);
             ps.executeUpdate();
         } catch (Exception e) {
         }

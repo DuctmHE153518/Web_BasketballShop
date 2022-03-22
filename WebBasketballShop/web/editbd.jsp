@@ -57,11 +57,11 @@
                                     <input value="${detail.pid}" name="pid" type="text" class="form-control" required>
                                 </div>
                                 <div class="form-group">
-                                    <label>quantity</label>
+                                    <label>Quantity</label>
                                     <input value="${detail.quantity}" name="quantity" type="text" class="form-control" required>
                                 </div>
                                 <div class="form-group">
-                                    <label>size</label>
+                                    <label>Size</label>
                                     <input value="${detail.size}" name="size" type="text" class="form-control" required>
                                 </div>
                                 <div class="form-group">

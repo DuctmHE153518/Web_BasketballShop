@@ -36,7 +36,7 @@
                 <div class="bg-light py-3">
                     <div class="container">
                         <div class="row">
-                            <div class="col-md-12 mb-0"><a href="index.jsp">Home</a> <span class="mx-2 mb-0">/</span> <strong class="text-black">Manager Bill Detail</strong></div>
+                            <div class="col-md-12 mb-0"><a href="home">Home</a> <span class="mx-2 mb-0">/</span> <strong class="text-black">Manager Bill Detail</strong></div>
                         </div>
                     </div>
                 </div>
@@ -84,9 +84,9 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="row mb-5">
-                                <a href="#addAcc" class="btn btn-success" data-toggle="modal">
+                                <a href="#addEmployeeModal3" class="btn btn-success" data-toggle="modal">
                                     <i class="material-icons">&#xE147;</i> 
-                                    <span>Add New Account</span>
+                                    <span>Add New Bill Detail</span>
                                 </a>
                             </div>
                         </div>
@@ -97,34 +97,38 @@
         <jsp:include page="footer.jsp"></jsp:include>
 
         <!-- Edit Modal HTML -->
-        <div id="addAcc" class="modal fade">
+        <div id="addEmployeeModal3" class="modal fade">
             <div class="modal-dialog">
                 <div class="modal-content">
-                    <form action="addacc" method="post">
+                    <form action="addbd" method="post">
                         <div class="modal-header">						
-                            <h4 class="modal-title">Add Account</h4>
+                            <h4 class="modal-title">Add Bill Detail</h4>
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                         </div>
                         <div class="modal-body">
                             <div class="form-group">
-                                <label>id</label>
+                                <label>ID</label>
                                 <input name="id" type="text" class="form-control" required>
                             </div>
                             <div class="form-group">
-                                <label>UserName</label>
-                                <input name="name" type="text" class="form-control" required>
+                                <label>Bill id</label>
+                                <input name="bid" type="text" class="form-control" required>
                             </div>
                             <div class="form-group">
-                                <label>Email</label>
-                                <input name="email" type="text" class="form-control" required>
+                                <label>Product id</label>
+                                <input name="pid" type="text" class="form-control" required>
                             </div>
                             <div class="form-group">
-                                <label>Password</label>
-                                <input name="pass" type="text" class="form-control" required>
+                                <label>Quantity</label>
+                                <input name="quantity" type="text" class="form-control" required>
                             </div>
                             <div class="form-group">
-                                <label>is Admin</label>
-                                <input name="isadmin" type="text" class="form-control" required>
+                                <label>Size</label>
+                                <input name="size" type="text" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label>price</label>
+                                <input name="price" type="text" class="form-control" required>
                             </div>
                         </div>
                         <div class="modal-footer">
