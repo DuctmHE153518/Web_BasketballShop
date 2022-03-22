@@ -23,9 +23,7 @@
         <link rel="stylesheet" href="css/owl.carousel.min.css">
         <link rel="stylesheet" href="css/owl.theme.default.min.css">
 
-
         <link rel="stylesheet" href="css/aos.css">
-
         <link rel="stylesheet" href="css/style.css">
     </head>
     <body>
@@ -51,7 +49,7 @@
                     <div class="container">
                         <div class="row justify-content-center">
                             <div class="col-md-7 site-section-heading text-center pt-4">
-                                <h2>Featured Products</h2>
+                                <h2>Sản phẩm nổi bật</h2>
                             </div>
                         </div>
                         <div class="row">
@@ -103,7 +101,6 @@
             </div>
             <jsp:include page="footer.jsp"></jsp:include>
         </div>
-
         <script src="js/jquery-3.3.1.min.js"></script>
         <script src="js/jquery-ui.js"></script>
         <script src="js/popper.min.js"></script>
@@ -111,8 +108,6 @@
         <script src="js/owl.carousel.min.js"></script>
         <script src="js/jquery.magnific-popup.min.js"></script>
         <script src="js/aos.js"></script>
-
         <script src="js/main.js"></script>
-
     </body>
 </html>

@@ -13,6 +13,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.Category;
 import model.Product;
 
 /**
@@ -38,9 +39,11 @@ public class SearchServlet extends HttpServlet {
         String txtSearch = request.getParameter("txt");
         ShopDAO db = new ShopDAO();
         ArrayList<Product> list = db.searchName(txtSearch);
+        ArrayList<Category> categorys = db.getAllCategory();
         
         request.setAttribute("listP", list);
         request.setAttribute("txtS", txtSearch);
+        request.setAttribute("listC", categorys);
         request.getRequestDispatcher("shop.jsp").forward(request, response);
         
     }

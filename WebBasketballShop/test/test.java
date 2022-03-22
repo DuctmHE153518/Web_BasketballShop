@@ -1,8 +1,7 @@
 
 import DAL.ShopDAO;
 import java.util.ArrayList;
-import model.Category;
-import model.Product;
+import model.Account;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -17,9 +16,10 @@ public class test {
 
     public static void main(String[] args) {
         ShopDAO dao = new ShopDAO();
-        ArrayList<Product> list = dao.getArrangePriceAsc();
-        for (Product o : list) {
-            System.out.println(o);
-        }
+        dao.insertAccount("11", "ahihi", "haiahi@gmail.com", "a123", "TRUE");
+//        ArrayList<Account> list = dao.getAllAccount();
+//        for (Account o : list) {
+//            System.out.println(o);
+//        }
     }
 }

@@ -30,12 +30,11 @@
                             <c:if test="${sessionScope.acc != null}">
                                 <li><a href="#">${sessionScope.acc.name}<span class="icon icon-person"></span></a></li>
                             </c:if>
-                            <li><a href="#"><span class="icon icon-heart-o"></span></a></li>
                             <li>
-                                
+                                <c:set var="size" value="${sessionScope.size}"/>
                                 <a href="cart.jsp" class="site-cart">
                                     <span class="icon icon-shopping_cart"></span>
-                                    <span class="count"></span>
+                                    <span class="count">${size}</span>
                                 </a>
                             </li> 
                             <li class="d-inline-block d-md-none ml-md-0"><a href="#" class="site-menu-toggle js-menu-toggle">
@@ -84,7 +83,7 @@
                             </c:if>
 
                         <c:if test="${sessionScope.acc.isAdmin == 'TRUE'}">
-                            <li><a href="#">Manager Account</a></li>
+                            <li><a href="manageracc">Manager Account</a></li>
                             <li><a href="manager">Manager Product</a></li>
                             </c:if>
                     </ul>

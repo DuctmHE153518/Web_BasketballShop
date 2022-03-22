@@ -32,11 +32,15 @@
     <body>
 
         <div class="site-wrap">
-            <jsp:include page="header.jsp"></jsp:include>
-                <div class="bg-light py-3">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-12 mb-0"><a href="home">Home</a> <span class="mx-2 mb-0">/</span> <a href="shop">Shop</a> <span class="mx-2 mb-0">/</span> <strong class="text-black">${detail.name}</strong></div>
+        <jsp:include page="header.jsp"></jsp:include>
+            <div class="bg-light py-3">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12 mb-0">
+                            <a href="home">Home</a> <span class="mx-2 mb-0">/</span> 
+                            <a href="shop">Shop</a> <span class="mx-2 mb-0">/</span> 
+                            <strong class="text-black">${detail.name}</strong>
+                        </div>
                     </div>
                 </div>
             </div>  
@@ -57,10 +61,12 @@
                             <div class="mb-1 d-flex">
                                 <c:forEach items="${details}" var="s">
                                     <label for="option-sm" class="d-flex mr-3 mb-3">
-                                        <span class="d-inline-block mr-2" style="top:-2px; position: relative;"><input type="radio" id="option-sm" name="shop-sizes"></span> <span class="d-inline-block text-black">${s.size}</span>
+                                        <span class="d-inline-block mr-2" style="top:-2px; position: relative;">
+                                            <input type="radio" id="option-sm" name="shop-sizes">
+                                        </span> 
+                                        <span class="d-inline-block text-black">${s.size}</span>
                                     </label>
                                 </c:forEach>
-
                             </div>
                             <div class="mb-5">
                                 <div class="input-group mb-3" style="max-width: 120px;">
@@ -73,7 +79,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <p><a href="buy?id=${listT.id}" class="buy-now btn btn-sm btn-primary">Add To Cart</a></p>
+                            <p><a href="cart.html" class="buy-now btn btn-sm btn-primary">Thêm vào giở hàng</a></p>
                         </div>
                     </div>
                 </div>
@@ -83,7 +89,7 @@
                 <div class="container">
                     <div class="row justify-content-center">
                         <div class="col-md-7 site-section-heading text-center pt-4">
-                            <h2>Featured Products</h2>
+                            <h2>Sản phẩm nổi bật</h2>
                         </div>
                     </div>
                     <div class="row">
@@ -122,8 +128,6 @@
         <script src="js/owl.carousel.min.js"></script>
         <script src="js/jquery.magnific-popup.min.js"></script>
         <script src="js/aos.js"></script>
-
         <script src="js/main.js"></script>
-
     </body>
 </html>

@@ -340,4 +340,93 @@ public class ShopDAO {
         }
     }
 
+    public ArrayList<Account> getAllAccount() {
+        ArrayList<Account> accounts = new ArrayList<>();
+        String sql = "select * from users";
+        try {
+            conn = new DBContext().getConnection();//mo ket noi voi sql
+            ps = conn.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                Account a = new Account();
+                a.setId(rs.getInt("user_id"));
+                a.setName(rs.getString("user_name"));
+                a.setEmail(rs.getString("user_email"));
+                a.setPass(rs.getString("user_pass"));
+                a.setIsAdmin(rs.getString("isAdmin"));
+                accounts.add(a);
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(ShopDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return accounts;
+    }
+
+    public Account getAccountId(String id) {
+        String sql = "select * from users\n"
+                + "where user_id = ?";
+        try {
+            conn = new DBContext().getConnection();//mo ket noi voi sql
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, id);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                return new Account(rs.getInt(1), rs.getString(2),
+                        rs.getString(3), rs.getString(4), rs.getString(5));
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(ShopDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+
+    public void deleteAccount(String id) {
+        String sql = "delete from users \n"
+                + "where user_id = ?";
+        try {
+            conn = new DBContext().getConnection();//mo ket noi voi sql
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, id);
+            ps.executeUpdate();
+        } catch (Exception e) {
+        }
+    }
+
+    public void insertAccount(String id, String name, String email,
+            String pass, String isadmin) {
+        String sql = "INSERT [users] ([user_id], [user_name], \n"
+                + "[user_email], [user_pass], [isAdmin]) \n"
+                + "VALUES(?, ?, ?, ?, ?)";
+        try {
+            conn = new DBContext().getConnection();//mo ket noi voi sql
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, id);
+            ps.setString(2, name);
+            ps.setString(3, email);
+            ps.setString(4, pass);
+            ps.setString(5, isadmin);
+            ps.executeUpdate();
+        } catch (Exception e) {
+        }
+    }
+
+    public void editAccount(String id, String name, String email,
+            String pass, String isadmin) {
+        String sql = "update users\n"
+                + "set user_name = ?, user_email = ?, \n"
+                + "user_pass = ?, isAdmin = ?\n"
+                + "where user_id = ?";
+        try {
+            conn = new DBContext().getConnection();//mo ket noi voi sql
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, name);
+            ps.setString(2, email);
+            ps.setString(3, pass);
+            ps.setString(4, isadmin);
+            ps.setString(5, id);
+            ps.executeUpdate();
+        } catch (Exception e) {
+        }
+    }
+
 }
